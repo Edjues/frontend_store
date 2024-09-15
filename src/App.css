@@ -1,10 +1,26 @@
+*{
+  padding: 0px;
+  margin: 0px;
+}
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 0px 2rem; */
   text-align: center;
+  
 }
-
+a {
+  text-decoration: none;
+}
+li{
+  list-style: none;
+}
+.cards{
+  display: grid;
+  /* flex-wrap: wrap; */
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+/* 
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -39,4 +55,4 @@
 
 .read-the-docs {
   color: #888;
-}
+} */

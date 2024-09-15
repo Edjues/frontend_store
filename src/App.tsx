@@ -1,33 +1,84 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useAppDispatch, useAppSelector } from './store/hook/hooks'
+import { increment } from './store/Slices/counter/counterSlice'
+
 import './App.css'
 
+import Button from './component/button/Button'
+import {Card, Product} from './component/Card/Card'
+
+
+const ListaProduct = [
+  {
+    title: "Papas rizadas, con sabor a mayonesa",
+    description: "- Papas 100% naturales",
+    price: 15.95,
+    stock: 5,
+    url: "#",
+    className: "card__product",
+    urlImg: "https://misaboracolombia.com/cdn/shop/files/rizadas7703133070379_2048x2048.webp?v=1708423292",
+  },
+  {
+    title: "Papas rizadas, con sabor a mayonesa",
+    description: "- Papas 100% naturales",
+    price: 15.95,
+    stock: 5,
+    url: "#",
+    className: "card__product",
+    urlImg: "https://misaboracolombia.com/cdn/shop/files/rizadas7703133070379_2048x2048.webp?v=1708423292",
+  },
+  {
+    title: "Papas rizadas, con sabor a mayonesa",
+    description: "- Papas 100% naturales",
+    price: 15.95,
+    stock: 5,
+    url: "#",
+    className: "card__product",
+    urlImg: "https://misaboracolombia.com/cdn/shop/files/rizadas7703133070379_2048x2048.webp?v=1708423292",
+  },
+  {
+    title: "Papas rizadas, con sabor a mayonesa",
+    description: "- Papas 100% naturales",
+    price: 15.95,
+    stock: 5,
+    url: "#",
+    className: "card__product",
+    urlImg: "https://misaboracolombia.com/cdn/shop/files/rizadas7703133070379_2048x2048.webp?v=1708423292",
+  },
+  {
+    title: "Papas rizadas, con sabor a mayonesa",
+    description: "- Papas 100% naturales",
+    price: 15.95,
+    stock: 5,
+    url: "#",
+    className: "card__product",
+    urlImg: "https://misaboracolombia.com/cdn/shop/files/rizadas7703133070379_2048x2048.webp?v=1708423292",
+  },
+]
+
 function App() {
-  const [count, setCount] = useState(0)
+  const count = useAppSelector( (state) => state.counter.value)
+  const dispatch = useAppDispatch();
+
+  function handleclick(){
+    dispatch(increment());
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <section className="cards">
+      {ListaProduct?.length > 0 ? ( 
+        (ListaProduct as Product[]).map((item, cont) => ( // Type assertion for clarity
+          <Card key={cont} product={item} />
+        ))
+      ) : (
+        <p>No hay datos</p>
+      )}
+    </section>
+    <section>
+      <div >
+        <Button onClick={handleclick} className='btn primary__btn'>{"count is "+count}</Button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    </section>
     </>
   )
 }

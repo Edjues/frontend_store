@@ -1,0 +1,16 @@
+ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+ul li a{
+    color: #000000e5;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+a:hover{
+    background-color: #fff171e8;
+}
