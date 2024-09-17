@@ -1,0 +1,39 @@
+.menu__desplegable{
+    display: flex;
+    flex-direction: column;
+}
+.nav__ul{
+    justify-content: flex-start;
+    gap: 2px;
+}
+.nav__ul li{
+    color:#000;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px 5px 0px 0px;
+    border: 1px solid #64e153db;
+}
+.nav__ul li:hover{ 
+    background: #64e153;
+    color:#fff;
+}
+.container{
+    background-color: #fff;
+    padding: 10px;
+    color: #cf3131;
+    border: 2px solid #7ae56b;
+    border-radius: 0px 5px 5px 0px;
+}
+.nav__ul .activeT{
+    background-color:   #64e153db;
+    color:#fff;
+    box-shadow: 1px 3px 10px 0px #000
+}
+.active{
+    display: flex;
+    opacity: 1;
+}
+.noaction{
+    display: none;
+    opacity: 0;
+}

@@ -1,15 +1,31 @@
-.search__input, .input__boxSmall{
+.search__input, .input__boxSmall, .input__form{
     background-color: transparent;
     border: 0px;
-    color: #000000e5; /* #d0adf0; #8d8d8d*/
+    color: #383838e5; /* #d0adf0; #8d8d8d*/
 }
 .input__boxSmall{
     width: 40px;
     font-size: 16px;
-    padding: 10px;
+    padding: 5px;
 }
-.search__input:focus, .input__boxSmall:focus{
+.search__input:focus, .input__boxSmall:focus, .input__form{
     border-radius: 4px;
     outline: none;
     outline-color: inherit;
+}
+.Group__Form{
+    display: flex;
+    gap:10px;
+    flex-direction: column;
+    width: 100%;
+}
+.input__form{
+    font-size: 12px;
+    padding: 10px;
+    border: 1px #383838e5 solid;
+    border-radius: 5px;
+}
+label{
+    text-align: justify;
+    color: #383838e5;
 }

@@ -26,6 +26,20 @@ li{
 .color{
   color: red;
 }
+.contain__modalLateral{
+  height: 68%;
+  overflow-y: scroll;
+}
+.footer__modalLateral{
+  background-color: #64e153db;
+  height: 23%;
+  padding: 10px;
+}
+.Grupo__input{
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+}
 /* 
 .logo {
   height: 6em;
