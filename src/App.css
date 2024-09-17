@@ -3,11 +3,11 @@
   margin: 0px;
 }
 #root {
-  max-width: 1280px;
+  max-width: 100%;
   margin: 0 auto;
   /* padding: 0px 2rem; */
   text-align: center;
-  
+  position: relative;
 }
 a {
   text-decoration: none;
@@ -15,10 +15,16 @@ a {
 li{
   list-style: none;
 }
-.cards{
+.body__producto__cart{
+  display: grid;
+}
+.cards__product{
   display: grid;
   /* flex-wrap: wrap; */
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+.color{
+  color: red;
 }
 /* 
 .logo {

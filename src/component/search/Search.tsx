@@ -1,7 +1,7 @@
 import React from 'react';
 import "./search.css"
 import Button from '../button/Button';
-import Input from '../input/input'
+import Input from '../input/Input'
 
 interface MenuProps{
     children?: React.ReactNode;

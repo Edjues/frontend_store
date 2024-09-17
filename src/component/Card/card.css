@@ -1,7 +1,12 @@
 .card__product{
     padding: 10px;
 }
-
+.card__product a{
+    height: auto;
+}
+.card__product p{
+    color: #000000ad;
+}
 .card__product img{
     max-width: 220px;
 }

@@ -1,0 +1,16 @@
+.cardList{
+    padding: 5px;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+}
+.cardList img{
+    max-width: 150px;
+}
+
+.cardList h3{
+    color: #0000004f;
+}

@@ -1,16 +1,37 @@
 import { useAppDispatch, useAppSelector } from './store/hook/hooks'
 import { increment } from './store/Slices/counter/counterSlice'
-
+import {useState} from 'react';
 import './App.css'
 
 import Button from './component/button/Button'
 import {Card, Product} from './component/Card/Card'
+import Modal from './component/modal/Modal'
+import LateralModal from './component/modal/LateralModal.tsx'
+import Menu from "./component/menu/Menu.tsx"
+import ItemMenu from './component/itemMenu/itemMenu.tsx'
+import reactLogo from './assets/react.svg'
+import Search from "./component/search/Search.tsx"
 
+import {ListCard, BuyProduct} from './component/list/ListCard'
 
-const ListaProduct = [
+const ListBuy = [
   {
+    codigo: 0,
     title: "Papas rizadas, con sabor a mayonesa",
-    description: "- Papas 100% naturales",
+    description: "Papas 100% naturales",
+    price: 15.95,
+    cantidad: 1,
+    url: "#",
+    className: "card__list__buy",
+    urlImg: "https://misaboracolombia.com/cdn/shop/files/rizadas7703133070379_2048x2048.webp?v=1708423292",
+  }
+]
+
+const ListProduct = [
+  {
+    codigo: 0,
+    title: "Papas rizadas, con sabor a mayonesa",
+    description: "Papas 100% naturales",
     price: 15.95,
     stock: 5,
     url: "#",
@@ -18,8 +39,9 @@ const ListaProduct = [
     urlImg: "https://misaboracolombia.com/cdn/shop/files/rizadas7703133070379_2048x2048.webp?v=1708423292",
   },
   {
+    codigo: 1,
     title: "Papas rizadas, con sabor a mayonesa",
-    description: "- Papas 100% naturales",
+    description: "Papas 100% naturales",
     price: 15.95,
     stock: 5,
     url: "#",
@@ -27,8 +49,9 @@ const ListaProduct = [
     urlImg: "https://misaboracolombia.com/cdn/shop/files/rizadas7703133070379_2048x2048.webp?v=1708423292",
   },
   {
+    codigo: 2,
     title: "Papas rizadas, con sabor a mayonesa",
-    description: "- Papas 100% naturales",
+    description: "Papas 100% naturales",
     price: 15.95,
     stock: 5,
     url: "#",
@@ -36,8 +59,9 @@ const ListaProduct = [
     urlImg: "https://misaboracolombia.com/cdn/shop/files/rizadas7703133070379_2048x2048.webp?v=1708423292",
   },
   {
+    codigo: 3,
     title: "Papas rizadas, con sabor a mayonesa",
-    description: "- Papas 100% naturales",
+    description: "Papas 100% naturales",
     price: 15.95,
     stock: 5,
     url: "#",
@@ -45,8 +69,9 @@ const ListaProduct = [
     urlImg: "https://misaboracolombia.com/cdn/shop/files/rizadas7703133070379_2048x2048.webp?v=1708423292",
   },
   {
+    codigo: 4,
     title: "Papas rizadas, con sabor a mayonesa",
-    description: "- Papas 100% naturales",
+    description: "Papas 100% naturales",
     price: 15.95,
     stock: 5,
     url: "#",
@@ -56,6 +81,9 @@ const ListaProduct = [
 ]
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
+  let [show, setShow]= useState(false);;
+
   const count = useAppSelector( (state) => state.counter.value)
   const dispatch = useAppDispatch();
 
@@ -63,21 +91,95 @@ function App() {
     dispatch(increment());
   }
 
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleOpen = () => {
+    setShow(true);
+  };
+
+  const handleClose = () => {
+    setShow(false);
+  };
+
+  const List = [
+  
+    {
+      id: 1,
+      descripcion: "Mis compras",
+      url: "#",
+    },
+    {
+      id: 2,
+      descripcion: "🛒",
+      title:"Carrito",
+      onClick: handleOpen,
+      supValue: 0,
+    }
+  ]
   return (
     <>
-    <section className="cards">
-      {ListaProduct?.length > 0 ? ( 
-        (ListaProduct as Product[]).map((item, cont) => ( // Type assertion for clarity
-          <Card key={cont} product={item} />
+    <Menu className="menu__primary">
+      <div>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <Search className='search__prod'></Search>
+      <ItemMenu listItem={List}></ItemMenu>
+    </Menu>
+    
+    <section className='body__producto__cart'>
+      <section className="cards__product">
+        {ListProduct?.length > 0 ? ( 
+          (ListProduct as Product[]).map((item, cont) => ( // Type assertion for clarity
+            <Card key={cont} product={item} />
+          ))
+        ) : (
+          <p>No hay datos</p>
+        )}
+      </section>
+    <button onClick={handleOpenModal}>modal</button>
+    <LateralModal title='Mis Compras' isOpen={show} onClose={handleClose}>
+      {ListBuy?.length > 0 ? ( 
+        (ListBuy as BuyProduct[]).map((item, cont) => ( // Type assertion for clarity
+          <ListCard key={cont} product={item} />
         ))
       ) : (
         <p>No hay datos</p>
       )}
+    </LateralModal>
+    <Modal isOpen={showModal} onClose={handleCloseModal}>
+      {/* <p className="color">Este es el contenido del modal.</p> */}
+        {/* {ListBuy?.length > 0 ? ( 
+            (ListBuy as BuyProduct[]).map((item, cont) => ( // Type assertion for clarity
+              <ListCard key={cont} product={item} />
+            ))
+          ) : (
+            <p>No hay datos</p>
+          )}
+          {ListBuy?.length > 0 ? ( 
+            <section className=''>
+                <p>Producto: </p>
+                <p>Envio: </p>
+                <p>Envio: </p>
+                <p>Total: </p>
+                <Button className='btn'>Finalizar Compra</Button>
+            </section>
+          ):(
+            <p></p>
+          )
+          } */}
+      </Modal>
+       
     </section>
     <section>
-      <div >
         <Button onClick={handleclick} className='btn primary__btn'>{"count is "+count}</Button>
-      </div>
     </section>
     </>
   )
