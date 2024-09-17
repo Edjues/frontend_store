@@ -6,11 +6,11 @@ import './App.css'
 import Button from './component/button/Button'
 import {Card, Product} from './component/Card/Card'
 import Modal from './component/modal/Modal'
-import LateralModal from './component/modal/LateralModal.tsx'
-import Menu from "./component/menu/Menu.tsx"
-import ItemMenu from './component/itemMenu/itemMenu.tsx'
+import LateralModal from './component/modal/LateralModal.ts'
+import Menu from "./component/menu/Menu.ts"
+import ItemMenu from './component/itemMenu/itemMenu.ts'
 import reactLogo from './assets/react.svg'
-import Search from "./component/search/Search.tsx"
+import Search from "./component/search/Search.ts"
 
 import {ListCard, BuyProduct} from './component/list/ListCard'
 

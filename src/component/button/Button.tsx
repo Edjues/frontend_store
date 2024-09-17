@@ -1,18 +1,19 @@
+// src/component/button/Button.ts
 import React from 'react';
-import "./Button.css"
+import './Button.css';
 
-interface ButtonProps{
-    children?: React.ReactNode;
-    onClick?: () => void;
-    className?: string
+interface ButtonProps {
+  children?: React.ReactNode;
+  onClick?: () => void;
+  className?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({ children, className, onClick }) => {
-    return(
-        <>
-            <button className={className} onClick={onClick}>{children}</button>
-        </>
-    )
-}
+  return React.createElement(
+    'button',
+    { className, onClick },
+    children
+  );
+};
 
 export default Button;
